@@ -1,0 +1,179 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.3 (swiftlang-1200.0.29.2 clang-1200.0.30.1)
+// swift-module-flags: -target x86_64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name AcquireIOSupport
+import AVFoundation
+@_exported import AcquireIOSupport
+import Foundation
+import MobileCoreServices
+import Photos
+import SafariServices
+import SocketIO
+import Swift
+import UIKit.UIFont
+import UIKit
+import WebKit
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers final public class AcquireIOConfig : ObjectiveC.NSObject {
+  @objc public static let config: AcquireIOSupport.AcquireIOConfig
+  @objc final public var buttonImageName: Swift.String {
+    get
+  }
+  @objc final public var themeOptions: [Swift.String : Any] {
+    get
+  }
+  @objc final public var showThreadList: Swift.Bool {
+    get
+  }
+  @objc final public var showChatButton: Swift.Bool {
+    get
+  }
+  @objc final public var showVideoButton: Swift.Bool {
+    get
+  }
+  @objc final public var showAudioButton: Swift.Bool {
+    get
+  }
+  @objc final public var showLocalNotificationInApp: Swift.Bool {
+    get
+  }
+  @objc final public var disableAttachment: Swift.Bool {
+    get
+  }
+  @objc final public var sessionConnectAndStartAuto: Swift.Bool {
+    get
+  }
+  @objc final public var isHideNewChat: Swift.Bool {
+    get
+  }
+  @objc final public func setDict(_ dict: [Swift.String : Any])
+  @objc deinit
+}
+@objc public enum ChannelType : Swift.Int {
+  case chat = 1
+  case audio = 2
+  case video = 3
+  public init(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum StartChannelType : Swift.Int {
+  case audio = 0
+  case video
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum AcquireIOAgentStatus : Swift.Int {
+  case online = 0
+  case offline
+  case invisible
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum AcquireIOConnectionStatus : Swift.Int {
+  case notConnected = 0
+  case disconnected
+  case connecting
+  case connected
+  case sessionStarted
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum AcquireIOInteractionEventType : Swift.Int {
+  case audioCallStarted = 0
+  case videoCallStarted
+  case audioCallAnswered
+  case videoCallAnswered
+  case callDeclined
+  case callAutoDeclined
+  case callerViewMinimize
+  case callerViewMaximize
+  case callerViewCameraSwitchToFront
+  case callerViewCameraSwitchToBack
+  case callSpeakerOn
+  case callSpeakerOff
+  case callMute
+  case callUnmute
+  case callVideoOn
+  case callVideoOff
+  case callDisconnected
+  case conversationStart
+  case conversationEnd
+  case conversationFeedbackSubmit
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public protocol AcquireIODelegate {
+  func didChangeConnectionStatus(status: AcquireIOSupport.AcquireIOConnectionStatus)
+  func didChangeAgentStatus(agentID: Swift.String, andStatus status: AcquireIOSupport.AcquireIOAgentStatus)
+  func onError(error: Swift.Error)
+  func hideSupport()
+  func didReceiveTriggerEvent(_ eventName: Swift.String)
+  func didUserInteracted(withEvent type: AcquireIOSupport.AcquireIOInteractionEventType, withData data: [Swift.String : Any]?)
+}
+extension AcquireIODelegate {
+  public func didChangeConnectionStatus(status: AcquireIOSupport.AcquireIOConnectionStatus)
+  public func didChangeAgentStatus(agentID: Swift.String, andStatus status: AcquireIOSupport.AcquireIOAgentStatus)
+  public func hideSupport()
+  public func onError(error: Swift.Error)
+  public func didReceiveTriggerEvent(_ eventName: Swift.String)
+  public func didUserInteracted(withEvent type: AcquireIOSupport.AcquireIOInteractionEventType, withData data: [Swift.String : Any]?)
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers final public class AcquireIO : ObjectiveC.NSObject {
+  @objc public static let support: AcquireIOSupport.AcquireIO
+  final public var delegate: AcquireIOSupport.AcquireIODelegate?
+  @objc final public func setAccount(_ accountUID: Swift.String, withOptions optionDictionary: AcquireIOSupport.AcquireIOConfig?)
+  @objc deinit
+}
+extension AcquireIO {
+  @objc final public func showSupport(_ viewController: UIKit.UIViewController)
+  @objc final public func startSession()
+  @objc final public func setVisitorHash(_ visitorHash: Swift.String)
+  @objc final public func getVisitorId() -> Swift.String
+  @objc final public func setVisitorDetails(_ data: [Swift.String : Any])
+  @objc final public func logoutVisitor()
+  @objc final public func getAvailableAgentCount() -> Swift.Int
+}
+extension UIFont {
+  public static let loadAcquireIOSupportFonts: ()
+}
+extension UIViewController {
+  @objc override dynamic open func awakeFromNib()
+}
+extension UILabel {
+  public var padding: UIKit.UIEdgeInsets? {
+    get
+    set
+  }
+  @objc override dynamic open func draw(_ rect: CoreGraphics.CGRect)
+  @objc override dynamic open var intrinsicContentSize: CoreGraphics.CGSize {
+    @objc get
+  }
+}
+extension AcquireIOSupport.ChannelType : Swift.Equatable {}
+extension AcquireIOSupport.ChannelType : Swift.Hashable {}
+extension AcquireIOSupport.ChannelType : Swift.RawRepresentable {}
+extension AcquireIOSupport.StartChannelType : Swift.Equatable {}
+extension AcquireIOSupport.StartChannelType : Swift.Hashable {}
+extension AcquireIOSupport.StartChannelType : Swift.RawRepresentable {}
+extension AcquireIOSupport.AcquireIOAgentStatus : Swift.Equatable {}
+extension AcquireIOSupport.AcquireIOAgentStatus : Swift.Hashable {}
+extension AcquireIOSupport.AcquireIOAgentStatus : Swift.RawRepresentable {}
+extension AcquireIOSupport.AcquireIOConnectionStatus : Swift.Equatable {}
+extension AcquireIOSupport.AcquireIOConnectionStatus : Swift.Hashable {}
+extension AcquireIOSupport.AcquireIOConnectionStatus : Swift.RawRepresentable {}
+extension AcquireIOSupport.AcquireIOInteractionEventType : Swift.Equatable {}
+extension AcquireIOSupport.AcquireIOInteractionEventType : Swift.Hashable {}
+extension AcquireIOSupport.AcquireIOInteractionEventType : Swift.RawRepresentable {}
